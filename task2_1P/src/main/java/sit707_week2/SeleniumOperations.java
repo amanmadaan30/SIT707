@@ -101,6 +101,7 @@ public class SeleniumOperations {
 		 * Take screenshot using selenium API.
 		 */
 		// Write code
+		sleep(2);
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenshot, new File("ss.png"));
 		
@@ -108,36 +109,40 @@ public class SeleniumOperations {
 		sleep(2);
 		
 		// close chrome driver
+		//driver.quit();
+		driver.close();
+
+		WebDriver driver1 = new ChromeDriver();
 
 		// let us now complete registration on another website...
-		driver.get("https://www.chemistwarehouse.com.au/login");
+		driver1.get("https://www.chemistwarehouse.com.au/login");
 
-		element = driver.findElement(By.id("name"));
+		element = driver1.findElement(By.id("name"));
 		System.out.println("Found element: " + element);
 		// Send first name
 		element.sendKeys("Aman");
 		sleep(2);
-		element = driver.findElement(By.id("lastname"));
+		element = driver1.findElement(By.id("lastname"));
 		System.out.println("Found element: " + element);
 		// Send last name
 		element.sendKeys("Madaan");
 		sleep(2);
-		element = driver.findElement(By.xpath("//input[@id='email']"));
+		element = driver1.findElement(By.xpath("//input[@id='email']"));
 		System.out.println("Found element: " + element);
 		// Send email address
 		element.sendKeys("amanmadaan10@gmail.com");
 		sleep(2);
-		element = driver.findElement(By.cssSelector("input#pass_confirmation"));
+		element = driver1.findElement(By.cssSelector("input#pass_confirmation"));
 		System.out.println("Found element: " + element);
 		// Send password
 		element.sendKeys("Aman@4321");
 		sleep(2);
-		element = driver.findElement(By.cssSelector("input#pass2"));
+		element = driver1.findElement(By.cssSelector("input#pass2"));
 		System.out.println("Found element: " + element);
 		// Send password
 		element.sendKeys("Aman@4321");
 		sleep(2);
-		element = driver.findElement(By.xpath("//input[@value='REGISTER']"));
+		element = driver1.findElement(By.xpath("//input[@value='REGISTER']"));
 		System.out.println("Found element: " + element);
 		// Submit register button
 		sleep(2);
@@ -145,11 +150,12 @@ public class SeleniumOperations {
 		if(element.isEnabled()) {
 			element.click();
 		}
-		File screenshot2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenshot, new File("ss2.png"));
-
-		driver.close();
-		driver.quit();
+		sleep(2);
+		File screenshot2 = ((TakesScreenshot) driver1).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenshot2, new File("ss2.png"));
+		sleep(2);
+		driver1.close();
+		driver1.quit();
 	}
 	
 }
