@@ -105,5 +105,16 @@ public class DateUtil {
 	public String toString() {
 		return day + " " + MONTHS[month - 1] + " " + year;
 	}
-	
+
+	public boolean isValid() {
+		if (month < 1 || month > 12) return false;
+
+		int[] daysInMonth = {31, (isLeapYear() ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+		return day >= 1 && day <= daysInMonth[month - 1];
+	}
+
+	private boolean isLeapYear() {
+		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	}
 }

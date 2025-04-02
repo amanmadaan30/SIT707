@@ -389,4 +389,120 @@ public class DateUtilTest {
 		date.increment();
 	}
 
+	// ---- Test cases from table (1B to 13B) ----
+	@Test
+	public void testCase1B() {
+		DateUtil date = new DateUtil(1, 6, 1994);
+		date.increment();
+		Assert.assertEquals(2, date.getDay());
+		Assert.assertEquals(6, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase2B() {
+		DateUtil date = new DateUtil(2, 6, 1994);
+		date.increment();
+		Assert.assertEquals(3, date.getDay());
+		Assert.assertEquals(6, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase3B() {
+		DateUtil date = new DateUtil(15, 6, 2024);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(6, date.getMonth());
+		Assert.assertEquals(2024, date.getYear());
+	}
+
+	@Test
+	public void testCase4B() {
+		DateUtil date = new DateUtil(30, 6, 1994);
+		date.increment();
+		Assert.assertEquals(1, date.getDay());
+		Assert.assertEquals(7, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase5B() {
+		DateUtil date = new DateUtil(31, 6, 1994);
+		Assert.assertFalse("Invalid date", date.isValid());
+	}
+
+	@Test
+	public void testCase6B() {
+		DateUtil date = new DateUtil(15, 1, 1994);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(1, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase7B() {
+		DateUtil date = new DateUtil(15, 2, 1994);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(2, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase8B() {
+		DateUtil date = new DateUtil(15, 11, 1994);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(11, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase9B() {
+		DateUtil date = new DateUtil(15, 12, 1994);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(12, date.getMonth());
+		Assert.assertEquals(1994, date.getYear());
+	}
+
+	@Test
+	public void testCase10B() {
+		DateUtil date = new DateUtil(15, 10, 1700);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(10, date.getMonth());
+		Assert.assertEquals(1700, date.getYear());
+	}
+
+	@Test
+	public void testCase11B() {
+		DateUtil date = new DateUtil(15, 6, 1701);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(6, date.getMonth());
+		Assert.assertEquals(1701, date.getYear());
+	}
+
+	@Test
+	public void testCase12B() {
+		DateUtil date = new DateUtil(15, 6, 2023);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(6, date.getMonth());
+		Assert.assertEquals(2023, date.getYear());
+	}
+
+	@Test
+	public void testCase13B() {
+		DateUtil date = new DateUtil(15, 6, 2024);
+		date.increment();
+		Assert.assertEquals(16, date.getDay());
+		Assert.assertEquals(6, date.getMonth());
+		Assert.assertEquals(2024, date.getYear());
+	}
+
+
 }
